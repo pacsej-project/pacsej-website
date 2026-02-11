@@ -152,4 +152,115 @@
       background: white;
     }
 
-    .ai-header { background: var(--bg
+    .ai-header { background: var(--bg2); padding: 1rem; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.7rem; }
+    .ai-chat { padding: 2rem; }
+    .chat-bubble { background: var(--bg3); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; }
+    .chat-bubble.ai { border-left: 3px solid var(--accent3); }
+
+    /* SECCIÓN AUTORA */
+    .author-flex {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .author-img { width: 180px; height: 180px; background: var(--bg3); border-radius: 50%; border: 1px solid var(--border); }
+
+    footer { padding: 4rem 3rem; text-align: center; background: var(--bg2); font-family: var(--font-mono); font-size: 0.7rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero-title { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">PACSEJ</a>
+    <ul class="nav-links">
+      <li><a href="#que-es">¿Qué es?</a></li>
+      <li><a href="#taxonomia">Taxonomía</a></li>
+      <li><a href="#marco">Marco Legal</a></li>
+      <li><a href="#asistente">Asistente IA</a></li>
+    </ul>
+    <a href="https://form.typeform.com/to/lwooln58" target="_blank" class="nav-cta">INICIAR AUDITORÍA</a>
+  </nav>
+
+  <section id="inicio">
+    <span class="hero-tag">Protocolo v2.0 · CTS & Legaltech</span>
+    <h1 class="hero-title">Hacia una auditoría <em>transparente</em> y libre de cajas negras.</h1>
+    <p style="margin-top: 2rem; max-width: 650px; font-size: 1.3rem; color: var(--text-muted);">
+      Protocolo de Auditoría Crítica de Sesgoritmos para software legal bajo estándares del AI Act y la normativa chilena.
+    </p>
+  </section>
+
+  <section id="que-es">
+    <span class="section-label">01. Propósito</span>
+    <h2 style="font-family: var(--font-inst); font-size: 3rem;">Desmantelar la opacidad.</h2>
+    <p style="max-width: 750px; margin-top: 1.5rem;">PACSEJ es una metodología diseñada para que abogados y auditores identifiquen sesgos estructurales en asistentes de IA, asegurando el cumplimiento de la ética algorítmica y la protección de datos.</p>
+  </section>
+
+  <section id="taxonomia">
+    <span class="section-label">02. Taxonomía de Sesgos</span>
+    <div class="grid-cards">
+      <div class="card">
+        <h3>Sesgo Estructural</h3>
+        <p>Analiza si el entrenamiento refleja desigualdades históricas del sistema judicial.</p>
+      </div>
+      <div class="card">
+        <h3>Sesgo de Transparencia</h3>
+        <p>Evaluación de la explicabilidad: ¿Puede el software justificar su decisión legal?</p>
+      </div>
+      <div class="card">
+        <h3>Sesgo Epistémico</h3>
+        <p>Impacto en la construcción del conocimiento jurídico y colonialidad del dato.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="marco">
+    <span class="section-label">03. Marco Regulatorio</span>
+    <div class="legal-box">
+      <strong>AI Act (Unión Europea):</strong> Art. 13 - Requisitos de transparencia para sistemas de alto riesgo.
+    </div>
+    <div class="legal-box" style="border-left-color: var(--accent2);">
+      <strong>Ley 19.628 (Chile):</strong> Protección de la vida privada y tratamiento de datos automatizados.
+    </div>
+  </section>
+
+  <section id="asistente">
+    <span class="section-label">04. Simulador de Auditoría</span>
+    <div class="ai-container">
+      <div class="ai-header">ASISTENTE PACSEJ v1.0</div>
+      <div class="ai-chat">
+        <div class="chat-bubble">Usuario: ¿Existe sesgo en esta base de datos judicial?</div>
+        <div class="chat-bubble ai">PACSEJ: Se detecta falta de representatividad en datos socioeconómicos. Riesgo de sesgo estructural detectado.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="autora">
+    <span class="section-label">05. Sobre la Investigación</span>
+    <div class="author-flex">
+      <div class="author-img"></div>
+      <div>
+        <h3 style="font-family: var(--font-inst); font-size: 2.5rem;">Especialista en Derecho e IA</h3>
+        <p style="max-width: 500px; margin-top: 1rem;">Investigadora enfocada en la intersección de la sociología jurídica y la tecnología. Desarrolladora del protocolo PACSEJ para el fortalecimiento del debido proceso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg2); text-align: center;">
+    <h2 style="font-family: var(--font-inst); font-size: 2.5rem; margin-bottom: 2rem;">¿Tu sistema cumple con los estándares?</h2>
+    <a href="https://form.typeform.com/to/lwooln58" target="_blank" class="nav-cta" style="padding: 1.2rem 3rem; font-size: 1rem;">REALIZAR EL TEST AHORA</a>
+  </section>
+
+  <footer>
+    <p>PACSEJ — 2026 · Protocolo de Auditoría Crítica de Sesgoritmos Jurídicos</p>
+    <p style="margin-top: 0.5rem; opacity: 0.6;">SANTIAGO, CHILE · LEGALTECH & CTS</p>
+  </footer>
+
+</body>
+</html>
