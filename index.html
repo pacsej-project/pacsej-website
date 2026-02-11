@@ -11,7 +11,6 @@
   
   <style>
     :root {
-      /* PALETA CLARA - ELIMINAMOS EL NEGRO */
       --bg: #FFFFFF;           
       --bg2: #F8FAFC;          
       --bg3: #F1F5F9;          
@@ -23,7 +22,6 @@
       --accent: #2B6CB0; /* Azul Tecnológico */
       --accent2: #ED8936; /* Naranja Acción */
       --accent3: #4FD1C5; /* Verde Aguamarina */
-      
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-inst: 'Instrument Serif', serif;
       --font-mono: 'DM Mono', monospace;
@@ -38,29 +36,41 @@
       font-family: var(--font-serif);
       font-size: 18px;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    /* NAV TOTALMENTE BLANCO Y LIMPIO (Aquí estaba el error) */
+    /* TEXTURA DE RUIDO */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 2000;
+      opacity: 0.12;
+    }
+
+    /* NAV CORREGIDO: BLANCO Y FIJO */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 1000;
+      z-index: 1500;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1rem 3rem;
-      background: rgba(255, 255, 255, 0.98); /* Fondo casi blanco sólido */
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       font-family: var(--font-mono);
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
       color: var(--accent);
       text-decoration: none;
-      letter-spacing: 0.1em;
+      font-weight: bold;
     }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -70,88 +80,73 @@
       text-transform: uppercase;
       color: var(--text-muted);
       text-decoration: none;
-      transition: 0.3s;
     }
-    .nav-links a:hover { color: var(--accent); }
 
     .nav-cta {
-      background: var(--accent2); /* NARANJA */
-      color: white;
-      padding: 0.7rem 1.5rem;
-      text-decoration: none;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: bold;
-      border-radius: 4px;
+      font-size: 0.75rem;
+      background: var(--accent2);
+      color: white;
+      padding: 0.6rem 1.4rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: 0.3s;
     }
+    .nav-cta:hover { background: var(--text); transform: translateY(-2px); }
 
-    /* HERO SECTION */
-    #hero {
-      padding: 12rem 3rem 6rem;
-      background: var(--bg);
-      min-height: 80vh;
+    /* HERO */
+    #inicio {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 8rem 3rem 5rem;
     }
 
-    .hero-label {
+    .hero-tag {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: var(--accent);
       border: 1px solid var(--accent);
-      padding: 0.4rem 1rem;
-      width: fit-content;
+      padding: 0.3rem 0.8rem;
       margin-bottom: 2rem;
+      width: fit-content;
     }
 
     .hero-title {
       font-family: var(--font-inst);
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 1;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 400;
+      line-height: 1.1;
       max-width: 900px;
-      margin-bottom: 2rem;
     }
 
     .hero-title em { color: var(--accent3); font-style: italic; }
 
-    /* SECCIONES Y TARJETAS SIN FONDOS OSCUROS */
-    section { padding: 6rem 3rem; border-bottom: 1px solid var(--border); }
-    
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    .btn-hero {
+      display: inline-block;
       margin-top: 3rem;
-    }
-
-    .card {
-      background: var(--bg2); /* Fondo gris muy clarito */
-      border: 1px solid var(--border);
-      padding: 3rem;
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2.5rem;
+      font-family: var(--font-mono);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
       transition: 0.3s;
     }
+    .btn-hero:hover { background: var(--accent2); }
 
-    .card:hover {
-      background: var(--surface);
-      border-color: var(--accent3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
+    /* SECCIONES */
+    section { padding: 6rem 3rem; border-bottom: 1px solid var(--border); position: relative; z-index: 10; }
+    .section-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent2); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+    
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .card { background: var(--bg2); border: 1px solid var(--border); padding: 2.5rem; transition: 0.3s; }
+    .card:hover { border-color: var(--accent3); transform: translateY(-5px); background: var(--surface); }
+    .card h3 { font-family: var(--font-inst); font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem; }
 
-    .card h3 {
-      font-family: var(--font-inst);
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      padding: 4rem 3rem;
-      text-align: center;
-      background: var(--bg3);
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-    }
+    footer { padding: 4rem 3rem; background: var(--bg2); text-align: center; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); }
 
     @media (max-width: 768px) {
       nav { padding: 1rem; }
@@ -165,40 +160,54 @@
   <nav>
     <a href="#" class="nav-logo">PACSEJ</a>
     <ul class="nav-links">
-      <li><a href="#protocolo">Protocolo</a></li>
-      <li><a href="#leyes">Marco Legal</a></li>
+      <li><a href="#que-es">Propósito</a></li>
+      <li><a href="#dimensiones">Protocolo</a></li>
+      <li><a href="#marco">Leyes</a></li>
     </ul>
-    <a href="https://form.typeform.com/to/lwooln58?typeform-source=email-button" target="_blank" class="nav-cta">HACER EL TEST</a>
+    <a href="https://form.typeform.com/to/lwooln58" target="_blank" class="nav-cta">HACER EL TEST</a>
   </nav>
 
-  <section id="hero">
-    <div class="hero-label">PROTOCOLO V2.0</div>
-    <h1 class="hero-title">Auditoría <em>Crítica</em> de Sesgos en la Justicia Algorítmica.</h1>
-    <p style="max-width: 600px; font-size: 1.3rem; color: var(--text-muted);">
-      Herramienta técnica para abogados y auditores bajo estándares del AI Act y la normativa chilena.
+  <section id="inicio">
+    <span class="hero-tag">Sistemas de IA e Impacto Jurídico</span>
+    <h1 class="hero-title">Auditoría Crítica de <em>Sesgoritmos</em> para la justicia transparente.</h1>
+    <a href="https://form.typeform.com/to/lwooln58" target="_blank" class="btn-hero">INICIAR TEST DE AUDITORÍA</a>
+  </section>
+
+  <section id="que-es">
+    <span class="section-label">01. Propósito</span>
+    <h2 style="font-family: var(--font-inst); font-size: 3rem;">Hacia una IA Explicable.</h2>
+    <p style="max-width: 700px; margin-top: 1.5rem; color: var(--text-muted);">
+      PACSEJ evalúa la genealogía de los datos y el impacto de los algoritmos en el debido proceso, alineado con el AI Act europeo y la jurisprudencia reciente sobre alucinaciones jurídicas.
     </p>
   </section>
 
-  <section id="protocolo">
-    <span style="font-family: var(--font-mono); color: var(--accent2);">01. Taxonomía de Sesgos</span>
+  <section id="dimensiones">
+    <span class="section-label">02. Dimensiones Críticas</span>
     <div class="card-grid">
       <div class="card">
-        <h3>Sesgo de Datos</h3>
-        <p>Análisis de la representatividad y calidad de la base de entrenamiento judicial.</p>
+        <h3>Sesgo Estructural</h3>
+        <p>¿Refleja el algoritmo desigualdades históricas de género o clase en sus predicciones?</p>
       </div>
       <div class="card">
-        <h3>Opacidad Técnica</h3>
-        <p>¿Es el modelo una "Caja Negra"? Evaluamos la explicabilidad según el Art. 13.</p>
+        <h3>Transparencia</h3>
+        <p>Análisis de la "Caja Negra": ¿Puede el abogado entender cómo la IA llegó a esa conclusión?</p>
       </div>
       <div class="card">
-        <h3>Impacto en Derechos</h3>
-        <p>Evaluación de riesgos para el debido proceso y la igualdad ante la ley.</p>
+        <h3>Cumplimiento</h3>
+        <p>Verificación de estándares bajo la Ley de Protección de Datos Personales y el AI Act.</p>
       </div>
     </div>
   </section>
 
-  <footer id="leyes">
-    <p>PACSEJ — 2026 · Basado en AI Act (UE) y Ley 19.628 (Chile)</p>
+  <section id="banner-final" style="background: var(--bg3); text-align: center;">
+    <h2 style="font-family: var(--font-inst); font-size: 2.5rem;">¿Tu sistema es seguro?</h2>
+    <p style="margin: 1.5rem 0;">Aplica el protocolo PACSEJ ahora mismo de forma gratuita.</p>
+    <a href="https://form.typeform.com/to/lwooln58?typeform-source=email-button" target="_blank" class="nav-cta" style="padding: 1rem 2.5rem; font-size: 1rem;">COMPLETAR EL FORMULARIO</a>
+  </section>
+
+  <footer>
+    <p>PACSEJ — Protocolo de Auditoría Crítica de Sesgoritmos Jurídicos · 2026</p>
+    <p style="margin-top: 0.5rem; opacity: 0.6;">INVESTIGACIÓN EN CTS Y LEGALTECH</p>
   </footer>
 
 </body>
