@@ -8,25 +8,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0d0d0f;
-      --bg2: #111115;
-      --bg3: #18181e;
-      --surface: #1e1e26;
-      --border: #2a2a38;
-      --border-light: #353548;
-      --text: #e8e6e0;
-      --text-muted: #8a8898;
-      --text-dim: #5a5a6e;
-      --accent: #c8a96e;
-      --accent2: #7c6fcd;
-      --accent3: #5fbfaa;
-      --red: #d45e5e;
+  :root {
+      /* Fondos Claros y Profesionales */
+      --bg: #FFFFFF;           /* Blanco Puro */
+      --bg2: #F8FAFC;          /* Gris azulado muy tenue para tarjetas */
+      --bg3: #F1F5F9;          /* Gris un poco más oscuro para secciones */
+      --surface: #FFFFFF;      /* Superficie de tarjetas */
+      
+      /* Bordes Suaves */
+      --border: #E2E8F0;       /* Gris claro para líneas divisorias */
+      --border-light: #CBD5E1; /* Borde sutil para inputs */
+      
+      /* Tipografía y Legibilidad Legal */
+      --text: #1A365D;         /* Azul Marino Profundo (el mejor para leer leyes) */
+      --text-muted: #4A5568;   /* Gris oscuro para textos secundarios */
+      --text-dim: #718096;     /* Gris claro para notas al pie */
+      
+      /* Paleta Tecnológica (Tus colores) */
+      --accent: #2B6CB0;       /* Azul Tecnológico (Títulos) */
+      --accent2: #ED8936;      /* Naranja (Acciones y Remediación) */
+      --accent3: #4FD1C5;      /* Verde Aguamarina (IA y Futuro) */
+      
+      /* Estados y Alertas */
+      --red: #E53E3E;          /* Rojo para riesgos prohibidos del AI Act */
+      
+      /* Fuentes (Mantenemos tus elegantes fuentes) */
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-inst: 'Instrument Serif', serif;
       --font-mono: 'DM Mono', monospace;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
