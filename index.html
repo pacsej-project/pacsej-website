@@ -962,27 +962,334 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2>¿Tu sistema cumple con los estándares?</h2>
-    <p>Aplica el protocolo PACSEJ en 20 minutos · 18 preguntas · Diagnóstico inmediato</p>
-    <a href="https://form.typeform.com/to/lwooln58" target="_blank" class="btn-large">REALIZAR EL TEST AHORA</a>
-  </section>
+<style>
+  /* Estilos para la sección de noticias */
+  .news-section {
+    padding: 6rem 3rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+  }
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-main">PACSEJ — Protocolo de Auditoría Crítica de Sesgoritmos Jurídicos</div>
-    <div class="footer-sub">
-      Creado por <strong>Paola A. Robayo Galán</strong> (Agente 003)<br>
-      Este proyecto es un artefacto proyectivo desarrollado en el marco de la<br>
-      <strong>Tesis de Maestría en Ciencia, Tecnología y Sociedad (CTS)</strong><br>
-      Universidad Alberto Hurtado · Santiago, Chile
+  .news-header {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .news-header h2 {
+    font-family: var(--font-inst);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .news-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 750px;
+  }
+
+  .news-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+
+  .news-feed {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 8px;
+  }
+
+  .news-feed h3 {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .news-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .news-item:last-child {
+    border-bottom: none;
+  }
+
+  .news-item-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .news-item-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .news-item-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .news-item-title a:hover {
+    color: var(--accent);
+  }
+
+  .news-item-source {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent3);
+    text-transform: uppercase;
+  }
+
+  .news-item-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  .analysis-box {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%);
+    border-radius: 8px;
+    padding: 2rem;
+    color: white;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+  }
+
+  .analysis-box h3 {
+    font-family: var(--font-inst);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .analysis-box p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+  }
+
+  .analysis-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .analysis-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .analysis-item p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 968px) {
+    .news-container {
+      grid-template-columns: 1fr;
+    }
+    .analysis-box {
+      position: relative;
+      top: 0;
+    }
+  }
+</style>
+
+<!-- SECCIÓN DE NOTICIAS -->
+<section id="noticias" class="news-section">
+  <div class="news-header">
+    <span class="section-label">06. Actualidad</span>
+    <h2>Noticias y Desarrollos en IA</h2>
+    <p>
+      Seguimiento automático de noticias sobre inteligencia artificial, auditoría algorítmica 
+      y gobernanza tecnológica desde fuentes académicas y periodísticas de referencia.
+    </p>
+  </div>
+
+  <div class="news-container">
+    <!-- COLUMNA IZQUIERDA: FEED AUTOMÁTICO -->
+    <div class="news-feed">
+      <h3>📰 Últimas Noticias</h3>
+      <div id="news-feed-container">
+        <div class="loading">Cargando noticias recientes...</div>
+      </div>
     </div>
-    <div class="footer-legal">
-      © 2026 Todos los derechos reservados · Legaltech & CTS<br>
-      Supervisión académica: [Nombre supervisor/a]
-    </div>
-  </footer>
+
+    <!-- COLUMNA DERECHA: ANÁLISIS CTS -->
+    <aside class="analysis-box">
+      <h3>Análisis CTS</h3>
+      <p>Perspectivas críticas sobre desarrollos recientes en gobernanza de IA desde Ciencia, Tecnología y Sociedad.</p>
+      
+      <div class="analysis-item">
+        <h4>🔍 Tema destacado</h4>
+        <p>
+          El AI Act europeo entró en vigencia pero la implementación revela tensiones entre 
+          compliance técnico y transformación democrática real de relaciones de poder algorítmico.
+        </p>
+      </div>
+
+      <div class="analysis-item">
+        <h4>📚 Lectura recomendada</h4>
+        <p>
+          <strong>"Algorithmic Governmentality in Latin America"</strong> (Ricaurte et al., 2024) 
+          analiza cómo imaginarios neocoloniales moldean adopción de IA en la región.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="background: linear-gradient(135deg, var(--accent) 0%, var(--accent3) 100%); color: white; text-align: center; padding: 6rem 3rem;">
+  <h2 style="font-family: var(--font-inst); font-size: 2.5rem; margin-bottom: 1.5rem;">¿Tu sistema cumple con los estándares?</h2>
+  <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Aplica el protocolo PACSEJ en 30 minutos · 16-18 preguntas · Diagnóstico inmediato</p>
+  <a href="https://form.typeform.com/to/lwooln58" target="_blank" style="background: white; color: var(--accent); padding: 1.2rem 3rem; font-family: var(--font-mono); font-size: 0.9rem; font-weight: bold; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 4px; display: inline-block; transition: 0.3s;">REALIZAR EL TEST AHORA</a>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding: 4rem 3rem; text-align: center; background: var(--bg2); border-top: 1px solid var(--border);">
+  <div style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem;">
+    PACSEJ — Protocolo de Auditoría Crítica de Sesgoritmos Jurídicos
+  </div>
+  <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+    Creado por <strong>Paola A. Robayo Galán</strong> (Agente 003)<br>
+    Este proyecto es un artefacto proyectivo desarrollado en el marco de la<br>
+    <strong>Tesis de Maestría en Ciencia, Tecnología y Sociedad (CTS)</strong><br>
+    Universidad Alberto Hurtado · Santiago, Chile
+  </div>
+  <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); padding-top: 1.5rem; border-top: 1px solid var(--border); max-width: 800px; margin: 0 auto;">
+    © 2026 Todos los derechos reservados · Legaltech & CTS<br>
+    Supervisión académica: Leandro Rodríguez Medina
+  </div>
+</footer>
+
+<!-- JAVASCRIPT PARA NOTICIAS AUTOMÁTICAS -->
+<script>
+  async function loadNews() {
+    const feedContainer = document.getElementById('news-feed-container');
+    
+    const feeds = [
+      {
+        name: 'MIT Tech Review AI',
+        url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.technologyreview.com/topic/artificial-intelligence/feed',
+        color: '#ED8936'
+      },
+      {
+        name: 'AI Ethics',
+        url: 'https://api.rss2json.com/v1/api.json?rss_url=https://ainowinstitute.org/feed',
+        color: '#4FD1C5'
+      },
+      {
+        name: 'The Verge AI',
+        url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.theverge.com/ai-artificial-intelligence/rss/index.xml',
+        color: '#2B6CB0'
+      }
+    ];
+
+    try {
+      const responses = await Promise.all(
+        feeds.map(feed => 
+          fetch(feed.url)
+            .then(res => res.json())
+            .then(data => ({
+              ...feed,
+              items: data.items || []
+            }))
+            .catch(() => ({ ...feed, items: [] }))
+        )
+      );
+
+      let allNews = [];
+      responses.forEach(feed => {
+        feed.items.slice(0, 3).forEach(item => {
+          allNews.push({
+            title: item.title,
+            link: item.link,
+            date: new Date(item.pubDate),
+            source: feed.name,
+            color: feed.color,
+            excerpt: stripHtml(item.description || item.content || '').slice(0, 150) + '...'
+          });
+        });
+      });
+
+      allNews.sort((a, b) => b.date - a.date);
+      allNews = allNews.slice(0, 8);
+
+      if (allNews.length === 0) {
+        feedContainer.innerHTML = '<div class="loading">No se pudieron cargar noticias. Intentá recargar la página.</div>';
+        return;
+      }
+
+      feedContainer.innerHTML = allNews.map(news => `
+        <div class="news-item">
+          <div class="news-item-date">${formatDate(news.date)}</div>
+          <div class="news-item-title">
+            <a href="${news.link}" target="_blank" rel="noopener">${news.title}</a>
+          </div>
+          <div class="news-item-source" style="color: ${news.color}">${news.source}</div>
+          <div class="news-item-excerpt">${news.excerpt}</div>
+        </div>
+      `).join('');
+
+    } catch (error) {
+      console.error('Error cargando noticias:', error);
+      feedContainer.innerHTML = '<div class="loading">Error al cargar noticias. Por favor recargá la página.</div>';
+    }
+  }
+
+  function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  }
+
+  function formatDate(date) {
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) return 'Hoy';
+    if (diffDays === 1) return 'Ayer';
+    if (diffDays < 7) return `Hace ${diffDays} días`;
+    if (diffDays < 30) return `Hace ${Math.floor(diffDays / 7)} semanas`;
+    
+    return date.toLocaleDateString('es-ES', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadNews);
+  } else {
+    loadNews();
+  }
+</script>
 
 </body>
 </html>
