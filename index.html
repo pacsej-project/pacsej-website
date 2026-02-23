@@ -39,6 +39,101 @@
     }
 
     /* NAV */
+<style>
+  /* Estilos para el nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff6b35;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links a:hover {
+    color: #ff6b35;
+  }
+
+  .nav-cta {
+    background: #ff6b35;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-cta:hover {
+    background: #DD6B20;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    nav {
+      padding: 1rem 1.5rem;
+    }
+    
+    .nav-links {
+      gap: 1rem;
+      font-size: 0.65rem;
+    }
+
+    .nav-cta {
+      padding: 0.5rem 1rem;
+      font-size: 0.65rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* Ocultar links en móvil - puedes agregar hamburger menu después */
+    }
+  }
+</style>
+
 <nav>
   <a href="#inicio" class="nav-logo">PACSEJ</a>
   <ul class="nav-links">
@@ -50,10 +145,11 @@
     <li><a href="#autora">Autora</a></li>
   </ul>
   <a href="https://form.typeform.com/to/lwooln58" class="nav-cta" target="_blank">
-    INICIAR AUDITORÍA
+    Iniciar Auditoría
   </a>
 </nav>
-    /* HERO */
+  
+  /* HERO */
     #inicio {
       padding: 10rem 3rem 5rem;
       min-height: 80vh;
